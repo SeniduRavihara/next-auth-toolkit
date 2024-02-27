@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import LoginButton from "@/components/auth/login-button";
 
-const font = Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["600", "800"],
+  weight: ["600", "800", "200"],
   display: "swap",
 });
 
@@ -17,7 +16,7 @@ export default function Home() {
         <h1
           className={cn(
             "text-6xl font-extrabold text-white drop-shadow-md",
-            font.className
+            poppins.className
           )}
         >
           🔐 Auth
@@ -25,7 +24,11 @@ export default function Home() {
         <p className="text-white text-lg">A simple authantication service</p>
         <div>
           <LoginButton>
-            <Button variant="secondary" size="lg">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="text-blue-900 font-semibold"
+            >
               Sign in
             </Button>
           </LoginButton>

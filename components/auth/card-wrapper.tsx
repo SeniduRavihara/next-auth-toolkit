@@ -1,18 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import Header from "./header";
 import Social from "./social";
 import BackButton from "./back-button";
-// import { Input } from "@/components/ui/input";
 
 type CardWrapperProps = {
   children: React.ReactNode;
