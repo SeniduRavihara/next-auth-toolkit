@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import {
   Form,
@@ -17,14 +17,13 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import FormError from "../form-error";
 import FormSuccess from "../form-success";
-import { login } from "@/actions/login";
 import { resetSchema } from "@/schemas";
+import { reset } from "@/actions/reset";
 
 const ResetForm = () => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof resetSchema>>({
@@ -39,21 +38,17 @@ const ResetForm = () => {
     setError("");
     setSuccess("");
 
-    
+    console.log(values);
 
-    // startTransition(() => {
-    //   login(values).then((data) => {
-    //     if (data) {
-    //       setError(data?.error);
-    //       setSuccess(data?.success);
-    //     }
-    //   });
-    // });
+    startTransition(() => {
+      reset(values).then((data) => {
+        if (data) {
+          setError(data?.error);
+          setSuccess(data?.success);
+        }
+      });
+    });
   }
-
-  useEffect(() => {
-    console.log("Hello");
-  });
 
   return (
     <CardWrapper
